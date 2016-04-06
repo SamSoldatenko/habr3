@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Электронный билет</string>
     <string name="ticketFileName">ticket-data.bin</string>
+    <string name="ticketNumberLabel">Билет</string>
+    <string name="positionInQueueLabel">Номер в очереди</string>
+    <string name="tellerNumberLabel">Окно</string>
+    <string name="createTicketButtonLabel">Взять Билет</string>
+    <string name="removeTicketLabel">Выбросить билет</string>
 </resources>
