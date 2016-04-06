@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Электронный билет</string>
+    <string name="ticketFileName">ticket-data.bin</string>
 </resources>
