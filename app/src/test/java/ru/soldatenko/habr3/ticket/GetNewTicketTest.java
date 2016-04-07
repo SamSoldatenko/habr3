@@ -30,7 +30,6 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GetNewTicketTest {
-
     @Mock
     LogInterface log;
 
@@ -44,12 +43,12 @@ public class GetNewTicketTest {
     ArgumentCaptor<Ticket> ticketCaptor;
 
     @InjectMocks
-    GetNewTicket systemUnderTest;
+    GetNewTicket task;
 
     @Test
     public void testDoInBackground_shouldCreateTicketData() throws Exception {
-        systemUnderTest.doInBackground();
-        assertNotNull(systemUnderTest.number);
+        task.doInBackground();
+        assertNotNull(task.number);
     }
 
     @Test
@@ -57,17 +56,17 @@ public class GetNewTicketTest {
         IOException testException = new IOException("Test exception");
         FileOutputStream out = mock(FileOutputStream.class, new ThrowsException(testException));
         when(context.openFileOutput(anyString(), anyInt())).thenReturn(out);
-        systemUnderTest.doInBackground();
-        assertSame(testException, systemUnderTest.exception);
+        task.doInBackground();
+        assertSame(testException, task.exception);
     }
 
     @Test
     public void testOnPostExecute_shouldCreateNewTicket() throws Exception {
-        systemUnderTest.number = "N01";
-        systemUnderTest.positionInQueue = 2;
-        systemUnderTest.tellerNumber = "T03";
+        task.number = "N01";
+        task.positionInQueue = 2;
+        task.tellerNumber = "T03";
 
-        systemUnderTest.onPostExecute(null);
+        task.onPostExecute(null);
 
         verify(ticketSubsystem).setTicket(ticketCaptor.capture());
         Ticket ticket = ticketCaptor.getValue();
@@ -78,9 +77,9 @@ public class GetNewTicketTest {
 
     @Test
     public void testOnPostExecute_shouldReportException() {
-        Exception testExcepion = new Exception("Test Exception");
-        systemUnderTest.exception = testExcepion;
-        systemUnderTest.onPostExecute(null);
-        verify(log).e(argThat(is(testExcepion)), anyString());
+        Exception testException = new Exception("Test Exception");
+        task.exception = testException;
+        task.onPostExecute(null);
+        verify(log).e(argThat(is(testException)), anyString());
     }
 }
