@@ -32,8 +32,8 @@ dependencies {
     testCompile 'org.powermock:powermock-module-junit4:1.6.4'
     testCompile 'org.powermock:powermock-api-mockito:1.6.4'
 
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:support-annotations:23.2.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:support-annotations:23.3.0'
     compile 'org.roboguice:roboguice:3.0.1'
     provided 'org.roboguice:roboblender:3.0.1'
 }
