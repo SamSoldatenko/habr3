@@ -2,8 +2,11 @@ package ru.soldatenko.habr3.ticket;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.support.annotation.UiThread;
+
 import ru.soldatenko.habr3.BR;
 
+@UiThread
 public class Ticket extends BaseObservable {
     private String number;
     private int positionInQueue;

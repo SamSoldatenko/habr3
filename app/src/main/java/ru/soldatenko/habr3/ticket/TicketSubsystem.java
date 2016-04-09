@@ -3,6 +3,7 @@ package ru.soldatenko.habr3.ticket;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Handler;
+import android.support.annotation.UiThread;
 
 import com.google.inject.Inject;
 
@@ -12,6 +13,7 @@ import javax.inject.Singleton;
 import ru.soldatenko.habr3.BR;
 
 @Singleton
+@UiThread
 public class TicketSubsystem extends BaseObservable {
     private Ticket ticket;
 
