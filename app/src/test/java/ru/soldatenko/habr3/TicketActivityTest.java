@@ -17,6 +17,7 @@ import javax.inject.Provider;
 
 import roboguice.activity.RoboActionBarActivity;
 import ru.soldatenko.habr3.databinding.ActivityTicketBinding;
+import ru.soldatenko.habr3.ticket.DeleteTicketFile;
 import ru.soldatenko.habr3.ticket.GetNewTicket;
 import ru.soldatenko.habr3.ticket.TicketSubsystem;
 
@@ -35,8 +36,11 @@ public class TicketActivityTest {
     @Mock
     TicketSubsystem ts;
 
-    @Mock
+    @Mock(name = "createTicketTask")
     Provider<GetNewTicket> getNewTicketProvider;
+
+    @Mock(name = "deleteTicketTask")
+    Provider<DeleteTicketFile> deleteTicketFileProvider;
 
     @Mock
     ActivityTicketBinding binding;
@@ -71,7 +75,9 @@ public class TicketActivityTest {
 
     @Test
     public void testOnRemoveTicketClick() {
+        DeleteTicketFile task = mock(DeleteTicketFile.class);
+        when(deleteTicketFileProvider.get()).thenReturn(task);
         activity.onRemoveTicketClick(mock(Button.class));
-        verify(ts).setTicket(null);
+        verify(task).execute();
     }
 }

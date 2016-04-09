@@ -9,6 +9,7 @@ import javax.inject.Provider;
 
 import roboguice.activity.RoboActionBarActivity;
 import ru.soldatenko.habr3.databinding.ActivityTicketBinding;
+import ru.soldatenko.habr3.ticket.DeleteTicketFile;
 import ru.soldatenko.habr3.ticket.GetNewTicket;
 import ru.soldatenko.habr3.ticket.TicketSubsystem;
 
@@ -18,6 +19,9 @@ public class TicketActivity extends RoboActionBarActivity {
 
     @Inject
     Provider<GetNewTicket> createTicketTask;
+
+    @Inject
+    Provider<DeleteTicketFile> deleteTicketTask;
 
     ActivityTicketBinding binding;
 
@@ -39,6 +43,6 @@ public class TicketActivity extends RoboActionBarActivity {
     }
 
     public void onRemoveTicketClick(View view) {
-        ticketSubsystem.setTicket(null);
+        deleteTicketTask.get().execute();
     }
 }
