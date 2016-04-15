@@ -1,5 +1,7 @@
 # habr3
 
+[![Build Status](https://travis-ci.org/SamSoldatenko/habr3.svg?branch=master)](https://travis-ci.org/SamSoldatenko/habr3)
+
 Это Android приложение - демонстрация применения MVC для обновления UI по изменениям
 сделаным в асинхронных операциях. Подход описан в статье https://habrahabr.ru/post/281290/
 
